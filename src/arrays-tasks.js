@@ -451,8 +451,15 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const res = [];
+  numbers.map((x, index) => {
+    if (x % 2 !== 0) {
+      res.push(index);
+    }
+    return x;
+  });
+  return res;
 }
 
 /**
@@ -465,8 +472,10 @@ function getIndicesOfOddNumbers(/* numbers */) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  const res = arr.map((x) => `00000${x.toString(16).toUpperCase()}`);
+  const result = res.map((x) => `#${x.slice(-6)}`);
+  return result;
 }
 
 /**
@@ -483,8 +492,13 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  arr.sort((a, b) => a - b);
+  const result = arr
+    .filter((x) => x >= n)
+    .slice(-n)
+    .sort((a, b) => b - a);
+  return result;
 }
 
 /**
